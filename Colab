@@ -1,0 +1,413 @@
+ '''
+#Из задания 1 для моей дипломной работы может пригодиться функция нахождения нахождения среднего значения. (Среднее (mean) = сумма / количество)
+sample = [4, 8, 15, 16, 23, 42]
+def mean(values: list[float]) -> float:
+    """Среднее арифметическое. Требует непустой список."""
+    if len(values) == 0:
+      print(('Введите данные в список'))
+      my_input = float(input())
+      values = [float(my_input)]
+    elif len(values) >= 1:
+      return sum(values) / len(values)
+    # : проверьте пустой список и верните sum(values)/len(values)
+    raise NotImplementedError("implement mean")
+
+print("mean =", mean(sample))
+'''
+'''
+#Из задания 1 для моей дипломной работы может пригодиться функция выведения отчета. 
+
+def describe(values: list[float]) -> dict:
+    """Короткое описание выборки (как мини-отчёт)."""
+    #  верните dict c ключами n/min/max/mean/median/std (std только если len>=2)
+    return {
+       # 'n': len(values),
+       # 'min': min(values),
+       # 'max': max(values),
+      #  'mean': mean(values),
+      #  "median": median(values),
+      #  "std": std_sample(values) if len(values) >= 2 else None,
+    }
+    raise NotImplementedError("implement describe")
+
+print("describe(sample) =", describe(sample))
+print("describe(sample_out) =", describe(sample_out))
+
+'''
+'''
+Из задания 2:
+
+Библиотека NumPy (Numerical Python) — это фундаментальная библиотека для научных вычислений в Python.
+import numpy as np
+# TODO: сгенерируйте 750 значений нормального распределения
+
+#Она предоставляет мощный, многомерный массивный объект (ndarray), который позволяет эффективно работать с большими массивами данных.
+# NumPy оптимизирован для выполнения численных операций, таких как сложение, умножение, преобразования и многие другие, намного быстрее, чем стандартные списки Python.
+digits = np.random.normal(0, 1, 750)
+#0 - среднее значение; 1 - стандартное отклонение; 750 - количество значений нормального распределения
+print(len(digits))
+'''
+
+'''
+# TODO: вычислите mean и std
+
+mean = np.mean(digits) # Вычисляем среднее значение (арифметическое среднее) для нашего набора данных 'digits'.
+std = np.std(digits)   # Вычисляем стандартное отклонение для нашего набора данных 'digits'. Стандартное отклонение показывает, насколько сильно данные отклоняются от среднего.
+mean, std
+
+#В данном случае:
+#   - среднее (loc) = 0: Большинство чисел будут сгруппированы вокруг нуля.
+#   - стандартное отклонение (scale) = 1: Определяет разброс чисел. Чем больше значение, тем шире разброс.
+#   - количество_чисел (size) = 750: Сколько случайных чисел будет сгенерировано.
+'''
+
+'''
+import matplotlib.pyplot as plt
+# В данном контексте plt — это общепринятое сокращение (или алиас), используемое для импорта модуля pyplot из библиотеки matplotlib.
+# TODO: постройте гистограмму data
+# Matplotlib — это самая популярная библиотека для визуализации данных в Python. Она позволяет создавать графики, диаграммы и любые другие визуальные представления данных.
+# hist() - для гистограммы;	pie() - круговые; bar(), barh() - столбцы, сравнение категорий
+# bins = 50 - это количество столбцов
+plt.hist(digits, bins = 50)
+'''
+
+'''
+# TODO: добавьте выброс 10
+digit_out = np.append(digits, 10)
+# Выброс в статистике — это значение в наборе данных, которое резко отличается от остальных значений. Простыми словами, это то, что «выпадает» из общего ряда.
+# Добавляем значение 10 в конец массива 'data', создавая новый массив 'data_out'. Значение 10 в данном контексте является выбросом, так как оно сильно отличается от остальных значений в нормальном распределении.
+len(digit_out)
+#В данном контексте 10 - это не число, а всего 1 элемент, поэтому, на выходе у нас не 760, а 751
+
+
+
+# Из задания 3
+
+
+
+                                                            Вероятность события P(A) по частотам
+
+
+def prob_event(count_A: int, n: int) -> float:
+    """P(A) = count(A)/n""" #Количество событий, которые нас интересуют, разделенное на общее количество событий
+    # TODO: проверьте n>0, корректность count_A и верните count_A/n
+    if n <=0:
+      raise ValueError("n должна быть больше 0")
+    elif count_A < 0 or count_A > n:
+      raise ValueError("неверное количество")
+    else:
+      return count_A / n
+n = len(records)
+print("P(clicked) =", prob_event(count_clicked, n))
+print("P(bought)  =", prob_event(count_bought, n))
+
+#получили вероятность события "Кликнул": 0,6, "Купил": 0,3 с контролем n <= 0 (общее количество событий n)
+
+
+                                                                    Условная вероятность P(A|B)
+
+def prob_conditional(count_A_and_B: int, count_B: int) -> float:
+  #Здесь конверсия: общее кол-во покупателей, которые купили  товар
+    """P(A|B) = count(A∩B)/count(B)"""    #"Кликнул и купил" / "Кликнул"
+  #count_A - купил, count_b - кликнул
+    # TODO: проверьте count_B>0, корректность count_A_and_B, верните count_A_and_B/count_B
+    if count_B <0:
+      return ('Количество "Купил" не может быть меньше 0')
+    elif count_clicked_and_bought <=0:
+      return ('Количество "Кликнул и Купил" не может быть меньше 0')
+    else:
+      return count_clicked_and_bought / count_B
+#Получили вероятность из тех, кто "кликнул и купил", разделенную на "Кликнул" - 0,5
+
+print("P(bought|clicked) =", prob_conditional(count_clicked_and_bought, count_clicked))
+
+
+ 
+                                                         Проверка независимости по частотам
+
+                                                         
+"""Проверка независимости по приближению |P(A|B)-P(A)| <= tol"""
+    #Всего посетителей сайта - 10000
+    #Событие 1: купили - 1000,
+    #Событие 2: кликнули на баннер - 2000, к
+    #Событие 3: кликнули на баннер и купили - 800
+
+    # TODO: верните abs(p_a_given_b - p_a) <= tol
+    def is_independent_by_counts(p_a: float, p_a_given_b: float, tol: float = 0.05) -> bool:
+      return abs(p_a_given_b - p_a) <= tol
+
+    p_bought = prob_event(count_bought, len(records))
+    p_bought_given_clicked = prob_conditional(count_clicked_and_bought, count_clicked)
+
+    print("P(bought) =", round(p_bought, 3))
+    print("P(bought|clicked) =", round(p_bought_given_clicked, 3))
+    print("independent? ->", is_independent_by_counts(p_bought, p_bought_given_clicked, tol=0.05))
+
+    
+                                                      Таблица сопряжённости 2×2 (contingency table)
+
+#Сделаем таблицу, где в строках "Кликнул / не кликнул", в столбцах "Купил / не купил", а на пересечении - результат.
+
+def contingency_2x2(recs: list[dict], a_key: str, b_key: str) -> list[list[int]]:
+    """2x2 таблица частот для бинарных признаков a_key и b_key (значения 0/1)."""
+    # TODO: создайте table=[[0,0],[0,0]] и заполните её циклом по recs
+    table = [[0,0], [0,0]]
+    #Здесь мы снова идем по индексам в списке из ячейки 1 и речь идет о парах признаков. Все признаки переводим в 0 и 1 и построим бинарную матрицу
+    for r in recs:
+        a = int(r[a_key])
+        b = int(r[b_key])
+        if a not in (0, 1) or b not in (0, 1):
+          raise ValueError("Значения должны быть 0 или 1")
+        table[a][b] += 1
+    return table
+
+
+table = contingency_2x2(records, "clicked", "bought") # Эта строка создает таблицу сопряженности 2×2 (таблицу контингентности) — специальный статистический инструмент для анализа связи между двумя категориальными переменными.
+print("table 2x2 =", table)
+#Теперь мы точно знаем, сколько раз в нашей матрице встречаются все возможные комбинации
+
+
+
+
+
+
+
+# Из задания 4
+
+
+                                                                  Счётчики (частоты) для Байеса
+
+
+def build_binary_counts(recs: list[dict], a_key: str, b_key: str) -> dict:
+    # TODO: посчитайте n, count_A, count_B, count_A_and_B и верните словарь
+    #Сделали общий словарь из ячейки 1, и по значениям считаем.
+    n = len(recs)
+    count_A = 0
+    count_B = 0
+    count_A_and_B = 0
+
+    for r in recs:
+        a = int(r[a_key])
+        b = int(r[b_key])
+        if a not in (0, 1) or b not in (0, 1):
+            raise ValueError("Значения должны быть только 0  или 1")
+        if a == 1:
+            count_A += 1
+        if b == 1:
+            count_B += 1
+        if a == 1 and b == 1:
+            count_A_and_B += 1
+
+    return {"n": n, "count_A": count_A, "count_B": count_B, "count_A_and_B": count_A_and_B}
+
+counts = build_binary_counts(records, "bought", "clicked")
+counts
+counts = build_binary_counts(records, "bought", "clicked")
+counts
+#В итоге получаем: n - количество записей, count_A - "Купил", count_B - "Кликнул", count_A_and_B - "Купил и кликнул"
+
+
+
+                                                        Безопасно считаем вероятность из частоты
+
+def prob_from_counts(count: int, n: int) -> float:
+    # TODO: проверьте n>0, корректность count и верните count/n
+
+    if n <= 0:
+        raise ValueError("количество значений должно быть больше 0")
+    if count < 0 or count > n:
+        raise ValueError("неверное количество")
+    return count / n
+
+print("P(bought)  =", prob_from_counts(counts["count_A"], counts["n"])) #вероятность из "Купил" из общего количества
+print("P(clicked) =", prob_from_counts(counts["count_B"], counts["n"])) #вероятность из "Кликнул" из общего количества
+
+
+
+                                                                       likelihood (правдоподобие)
+
+def prob_conditional(count_A_and_B: int, count_A: int) -> float:
+    # TODO: реализуйте безопасно и верните count_A_and_B/count_A
+    if count_A <= 0:
+        raise ValueError("количество 'Купил' должно быть больше 0 > 0")
+    if count_A_and_B < 0 or count_A_and_B > count_A:
+        raise ValueError("количество 'Кликнул и купил' должно быть больше 0, либо количество 'Кликнул и купил' должно быть меньше количества 'Купил'")
+    return count_A_and_B / count_A
+
+p_B_given_A = prob_conditional(counts["count_A_and_B"], counts["count_A"])
+print("P(clicked|bought) =", p_B_given_A)
+
+#Для понимания: каждый раз, когда совершалась покупка, ей предшествовал клик в 100% случаев (Клик происходит не всегда, но без клика нет покупки).
+#Если не пройти пункты 1,2,3,4 и не посчитать правильно, с Байесом ничего не получится.
+
+
+                                                                        Формула Байеса (bayes_posterior)
+def bayes_posterior(prior: float, likelihood: float, evidence: float) -> float:
+    # TODO: проверьте значения в [0,1], evidence>0, верните (likelihood*prior)/evidence.
+    # Во всем это великолепии, ячейка №5 - центровая, потому что каждый "Клик" обновляет нашу уверенность в гипотезе.
+    # Апостилиорная вероятноость: у нас была гипотеза поведения покупателя в соответствии с нашей статистикой и вероятностями и Байес обновляет наш взгляд на положение вещей.
+    # Мы считаем вероятность "'Купил, если кликнул' = ('Кликнул|Купил' * 'Купил' / 'Кликнул')".
+    # Мы проверяем согласованность результатов, получаем вероятность по формуле Байеса и сравниваем с условной вероятностью из исходных данных.
+    # В большой выборке, в которой мы должны тоже находиться около 0.5. Если вероятность по Байеса сильно отличается от условной вероятности,
+    #                         то делаем заключение, что наша модель неверна, либо просочились события, которые не должны быть.
+    #ЗОЛОТАЯ СЕРЕДИНА: 0,5
+
+    #В коде происходит проверка, что все вероятности находятся в диапазоне от 0 до 1.
+     for name, p in [("априорная вероятность", prior), ("правдоподобие", likelihood), ("evidence", evidence)]:
+         if p < 0 or p > 1:
+             raise ValueError(f"апостериорная вероятность: {name} должна быть в диапазоне: [0,1]")
+         if evidence == 0:
+             raise ValueError("апостериорная вероятность: должна быть > 0")
+     return (likelihood * prior) / evidence
+
+prior = prob_from_counts(counts["count_A"], counts["n"]) # Вероятность "Купил"
+evidence = prob_from_counts(counts["count_B"], counts["n"]) # Вероятность "Кликнул"
+likelihood = p_B_given_A                                    # Вероятность "Кликнул|Купил"
+
+posterior = bayes_posterior(prior, likelihood, evidence)  # вероятность 'Купил|Кликнул'
+print("Согласно формуле Байеса, вероятность 'Купил|Кликнул' =", posterior)
+
+
+                                                        Наивный скоринг: P(buy | clicked=value)
+
+def score_buy_probability(recs: list[dict], clicked_value: int) -> float:
+    # TODO: отфильтруйте subset по clicked_value, посчитайте bought_count и верните bought_count/len(subset)
+    # Считается вероятность покупки в зависиомти от значения "Кликов"
+    # Наивный, потому что сразу понятно по данным, как все устроено. Использует эмпирические частоты, без применения Байеса.
+    # Наивный скоринг - это "Железные" эмпирические данные, а Байес - то, как изменятся ожидания от события, которое еще не произошло.
+    if clicked_value not in (0, 1): #Проверяем, что клик 0 или 1.
+        raise ValueError("Значение 'Клика' должно быть 0 или 1")
+    subset = [r for r in recs if int(r["clicked"]) == clicked_value]
+    if len(subset) == 0:
+        raise ValueError("Нет")
+    bought_count = sum(1 for r in subset if int(r["bought"]) == 1)
+    return bought_count / len(subset)
+
+p_buy_click1 = score_buy_probability(records, 1)
+p_buy_click0 = score_buy_probability(records, 0)
+
+print("P(buy|click=1) =", p_buy_click1)# вероятность покупки среди тех, кто кликнул
+print("P(buy|click=0) =", p_buy_click0)#вероятность покупки среди тех, кто не кликнул
+
+
+
+
+                                                      Сглаживание Лапласа
+# Решаем проблему нулевой вероятности
+# Цель метода: избежать значений, которые возникли по ошибке.
+# Принудительно добавляем 1 или 2
+
+
+# TODO: посчитайте сглаженную вероятность для clicked=0
+# TODO: проверьте корректность и верните (successes+1)/(trials+2)
+def laplace_smooth_prob(successes: int, trials: int) -> float:
+
+    if trials < 0 or successes < 0 or successes > trials:
+        raise ValueError("Неверные значения")
+    return (successes + 1) / (trials + 2)
+
+subset0 = [r for r in records if int(r["clicked"]) == 0]
+succ0 = sum(1 for r in subset0 if int(r["bought"]) == 1)
+p_smooth0 = laplace_smooth_prob(succ0, len(subset0))
+
+print("raw P(buy|click=0) =", p_buy_click0)
+print("smooth P(buy|click=0) =", p_smooth0)
+
+
+
+№Из задания 5
+
+                                                                      Функция mean
+def mean(values) -> float:
+    """Среднее арифметическое для списка/массива."""
+    # TODO: проверьте пустой список и верните sum(values)/len(values)
+    if len(values) == 0:
+        raise ValueError("mean: empty")
+    return float(sum(values)) / len(values)
+
+m = mean(data)
+m
+
+#сложили 80 "характеристик"(14,7, 16,4 и т.д.) вокруг 15 (т.к. это центр) и поделили на 80
+
+
+
+
+                                                                        Выборочное std: std_sample
+
+def variance_sample(values) -> float:
+    # TODO: реализуйте выборочную дисперсию: sum((x-m)^2)/(n-1)
+    n = len(values)
+    if n < 2:
+        raise ValueError("для расчета выборочной дисперсии и стандартного отклонения нужно минимум 2 наблюдения")
+    m = mean(values) #m - это среднее всех значений
+    return float(sum((x - m) ** 2 for x in values)) / (n - 1)  #берем разницу измерения каждого из 80 элементов и находим разницу отклонения от среднего.
+                                                               # Если х больше среднего, у нас положительное отклонение, а если х меньше среднего, у нас отрицательное отклонение.
+                                                               # Когда возводим в квадрат, получаем положительное значение, избавляясь от минуса.
+                                                               # Чем больше отклонение x от m, еще и возведенное в квадрат, мы "наказываем" большие отклонения, но затем берем квадратный корень в стандарном отклонении.
+                                                               # Дисперсия и станд. отклонение всегда работают в связке, показывая насколько от центра разбросаны измерения (Мой центр - это 15, а разброс - 4).
+
+
+def std_sample(values) -> float:
+    # TODO: верните sqrt(variance_sample(values))
+    return variance_sample(values) ** 0.5  #0.5 - это то же, что и квадратный корень
+
+s = std_sample(data)
+s
+# получили дисперсию, а затем выборочное стандартное отклонение и вывели его на print
+# видно, что мои данные разбросаны от центра на 3.097531857270014
+
+
+                                                                        Приближённый 95% CI для среднего (normal approx)
+def ci_mean_normal_approx(values, z: float = 1.96):
+    """Приближённый CI для среднего: mean ± z*SEM."""
+    # Функция вычисляет приближённый доверительный интервал для среднего, используя нормальное приближение.
+    # z: float = 1.96 — параметр с значением по умолчанию 1.96. 1,96  - это стандартное нормального распределения для 95% доверительного интервала
+
+    # TODO: посчитайте m=mean(values), se=sem(values) и верните (m - z*se, m + z*se)
+
+    se = sem(values) # стандартная ошибка среднего
+    return (m - z * se, m + z * se)  # вернулись левая и правая граница интервала, крайние значения 95% (среднее слева минус погрешность и среднее справа плюс погрешность, по итогу на выходе числа разные)
+
+ci_norm = ci_mean_normal_approx(data)
+ci_norm
+
+
+                                                                Бутстрэп: “новая выборка из старой” с возвращением
+
+
+def bootstrap_means(values, n_boot: int = 5000, seed: int = 0):
+    # TODO: реализуйте список из n_boot средних, полученных бутстрэпом
+
+    rng = np.random.default_rng(seed) # рандом для генерации много раз
+    values = np.asarray(values)
+    n = len(values)
+    if n == 0:
+        raise ValueError("значения для бустстрэпа не должны быть пусты")
+    means = [] # Сюда сложатся все значения бустстрэпа
+    for _ in range(n_boot):
+        idx = rng.integers(0, n, size=n)  # выборка индексов с возвращением
+        sample_b = values[idx] #расширяем выборку и делаем еще 148 подобных
+        means.append(float(np.mean(sample_b)))
+    return means
+
+
+boot = bootstrap_means(data, n_boot=5000, seed=1) #data из 1 ячейки, n_boot=5000 - это 5к элементов, а seed=1 для повторяемости данных, но значение seed может быть любым
+len(boot), boot[0]
+
+# в результате boot - это значения бустстрэпа, в котором 5000 элементов и на каждый из 80 первоначальных элементов мы сделали по 148 нормальных распределений
+
+
+                                                     Bootstrap CI через квантили
+                                                     
+def bootstrap_ci_mean(values, n_boot: int = 5000, alpha: float = 0.95, seed: int = 0):
+    # TODO: получите means=bootstrap_means(...), верните квантили (alpha/2, 1-alpha/2)
+    means = bootstrap_means(values, n_boot=n_boot, seed=seed)
+    low = float(np.quantile(means, alpha/2))
+    high = float(np.quantile(means, 1 - alpha/2))
+    return low, high
+
+
+ci_boot = bootstrap_ci_mean(data, n_boot=5000, alpha=0.95, seed=1) # alpha=0.95 работаем в диапазоне 0,95%
+ci_boot
+# получили нижний уровень low и верхний уровень high. Слева от центра 15.085393650167259 и справа от центра 15.13412471581603 для сгенерированного большого количества элементов
