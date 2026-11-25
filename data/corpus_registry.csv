@@ -1,0 +1,9 @@
+doc_id,doc_type,title,date,status,last_checked,replaced_by,source,file_path,pages,has_ocr,airport_specific,chunking_strategy,chunk_count,notes
+tk_eaeu_2026,ТК ЕАЭС ,Таможенный кодекс ЕАЭС ,26.11.26,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/TK_EAES.docx,457,false,false ,by_article ,0,"""Базовая редакция"" "
+prikaz_fts_444,Prikaz,Приказ ФТС №444 от 18.03.2019,18.03.19,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/Prikaz FTS N444.docx,25,false,false ,by_article ,0,"""Базовая редакция"" "
+prikaz_fts_1070,Prikaz,Приказ ФТС №1070 от 27.05.2011,27.05.11,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/Prikaz FTS N1070.docx,14,false,false ,by_article ,0,"""Базовая редакция"" "
+prikaz_fts_1371,Prikaz,Приказ ФТС №1371 от 27.05.2011,27.06.11,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/Prikaz FTS N1371.docx,15,false,false ,by_article ,0,"""Базовая редакция"" "
+Recommendation_28,Recommendation,Рекомедация Коллегии ЕЭК №28 от 18.12.2018,18.12.18,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/Recommendation Kollegii N28.docx,8,false,false ,by_article ,0,"""Базовая редакция"" "
+FZ_289,FZ,ФЗ №289 от 03.08.2018,03.08.18,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/FZ N289.docx,388,false,false ,by_article ,0,"""Базовая редакция"" "
+Reshenie_141,Reshenie_141,Решение Коллегии ЕЭК №141 от 17.12.2024,17.12.24,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/Reshenie Kollegii N141 o registracii tranzitnoy deklaracii.docx,6,false,false ,by_article ,0,"""Базовая редакция"" "
+,Reshenie_73,Решение Коллегии ЕЭК №73 от 30.05.2023,30.05.23,действующий ,26.11.26,26.11.26,Официальный портал ,data/raw/Reshenie Kollegii N73 o forme tranzitnoy deklaracii.docx,28,false,false ,by_article ,0,"""Базовая редакция"" "

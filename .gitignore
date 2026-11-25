@@ -19,7 +19,7 @@ env/
 Thumbs.db
 
 # Data
-data/*
+data/*.docx
 !data/.gitkeep
 
 # Local secrets
